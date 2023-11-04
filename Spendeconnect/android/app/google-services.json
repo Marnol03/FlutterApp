@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "819684240828",
+    "project_id": "spendeconnect",
+    "storage_bucket": "spendeconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819684240828:android:4eb14bb9fc3c4ae1760fb9",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGYZ_mQucVImYxElKfcr-ppzLz5OpAmoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

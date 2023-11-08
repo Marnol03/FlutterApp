@@ -124,11 +124,11 @@ class _CreatePubState extends State<CreatePub> {
 
                       final titlePubRe = titlePub.text;
                       final pudDescriptionRe = pubDescription.text;
-                      final amountRe = amountNeeded.text;
-                      final imageDownloadUrl = imageUrl; // Utilisez l'URL de l'image téléchargée depuis Firebase
+                      final amountRe = double.parse(amountNeeded.text);
+                      final imageDownloadUrl = imageUrl;
 
                       ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Envoi en cours ...")));
+                          const SnackBar(content: Text("sending...")));
                       FocusScope.of(context).requestFocus(FocusNode());
 
                       CollectionReference postRef = FirebaseFirestore.instance.collection("Post");
@@ -136,8 +136,14 @@ class _CreatePubState extends State<CreatePub> {
                         "title": titlePubRe,
                         "text": pudDescriptionRe,
                         "amount" : amountRe,
-                        "image_url": imageDownloadUrl, // Ajoutez l'URL de l'image à Firebase
+                        "image_url": imageDownloadUrl,
 
+                      });
+                      setState(() {
+                        titlePub.clear();
+                        pubDescription.clear();
+                        amountNeeded.clear();
+                        controller.image.value = File('');
                       });
                     }
                   },

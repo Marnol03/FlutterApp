@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
             });
             return Column(
               children: postItems.map((post) {
-                double totalAmount = post["amount"].toDouble();
+                double totalAmount = double.parse(post["amount"].toString());
                 return Column(
                   children: [
                     Container(

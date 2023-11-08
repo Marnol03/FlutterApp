@@ -1,4 +1,4 @@
-# FlutterApp
+# FlutterApp (Team 6)
 __Spendeconnect__
 ## About us
 **Spendeconnect** is an innovative platform aimed at bringing trustworthy causes closer to passionate donors. With an intuitive user interface, users can easily create profiles, explore a variety of charitable campaigns, and make donations effortlessly. Each campaign is carefully detailed, providing comprehensive information about its goals, current funding, and deadline. Through real-time analytics, contributors can track the impact of their donations, thereby strengthening trust and commitment to the supported causes. Join us in our mission to make a positive difference in the world, one donation at a time. Together, we can build a better future for communities worldwide.

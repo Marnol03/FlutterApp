@@ -44,37 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAMpFeQCWbYDU6Pay0KpX9MaQKG_m3hu3I',
-    appId: '1:819684240828:web:bd830dddeb9096ac760fb9',
-    messagingSenderId: '819684240828',
-    projectId: 'spendeconnect',
-    authDomain: 'spendeconnect.firebaseapp.com',
-    storageBucket: 'spendeconnect.appspot.com',
+    apiKey: 'AIzaSyCmgxxAhxjYmYgj5z8amHBIuRk-Tn076ds',
+    appId: '1:698502312073:web:f3e457f28f05af004d9658',
+    messagingSenderId: '698502312073',
+    projectId: 'spendeconnect-ac211',
+    authDomain: 'spendeconnect-ac211.firebaseapp.com',
+    storageBucket: 'spendeconnect-ac211.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDGYZ_mQucVImYxElKfcr-ppzLz5OpAmoA',
-    appId: '1:819684240828:android:4eb14bb9fc3c4ae1760fb9',
-    messagingSenderId: '819684240828',
-    projectId: 'spendeconnect',
-    storageBucket: 'spendeconnect.appspot.com',
+    apiKey: 'AIzaSyAXAAgdCtL8-Gl4eK8v7fZJHpHxyIT9M0U',
+    appId: '1:698502312073:android:829fd6ec0f72539b4d9658',
+    messagingSenderId: '698502312073',
+    projectId: 'spendeconnect-ac211',
+    storageBucket: 'spendeconnect-ac211.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAoy7rj-HTjChze_lVzpB2N68RpwOZC3-8',
-    appId: '1:819684240828:ios:ce838e3fe544e863760fb9',
-    messagingSenderId: '819684240828',
-    projectId: 'spendeconnect',
-    storageBucket: 'spendeconnect.appspot.com',
+    apiKey: 'AIzaSyAHeyrqFnGyMpO4LbOAsOn61-9jRagWYho',
+    appId: '1:698502312073:ios:511c348d718382c04d9658',
+    messagingSenderId: '698502312073',
+    projectId: 'spendeconnect-ac211',
+    storageBucket: 'spendeconnect-ac211.appspot.com',
     iosBundleId: 'com.example.myapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAoy7rj-HTjChze_lVzpB2N68RpwOZC3-8',
-    appId: '1:819684240828:ios:80abc399b1dcd652760fb9',
-    messagingSenderId: '819684240828',
-    projectId: 'spendeconnect',
-    storageBucket: 'spendeconnect.appspot.com',
+    apiKey: 'AIzaSyAHeyrqFnGyMpO4LbOAsOn61-9jRagWYho',
+    appId: '1:698502312073:ios:7985d82135f36d5e4d9658',
+    messagingSenderId: '698502312073',
+    projectId: 'spendeconnect-ac211',
+    storageBucket: 'spendeconnect-ac211.appspot.com',
     iosBundleId: 'com.example.myapp.RunnerTests',
   );
 }

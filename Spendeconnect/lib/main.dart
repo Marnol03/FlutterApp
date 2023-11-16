@@ -52,12 +52,12 @@ class _MyAppState extends State<MyApp> {
                   fontSize: 28,
                 )
             ),
-            Text("History of your gifts",
+            Text("Favorites",
                 style: TextStyle(
                   fontSize: 28,
                 )
             ),
-            Text("Contact the Support",
+            Text("About me",
                 style: TextStyle(
                   fontSize: 28,
                 )
@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
            HomePage(),
           const CreatePub(),
           const HistoryPage(),
-          const HelpPage()
+           ProfilPage()
         ][_CurrentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _CurrentIndex,
@@ -85,12 +85,12 @@ class _MyAppState extends State<MyApp> {
               label: 'New',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history_rounded),
-              label: 'Histories',
+              icon: Icon(Icons.bookmark_outline),
+              label: 'Favorite',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.help_outline_outlined),
-              label: 'Help',
+              label: 'About me',
             )
           ],
         ),

@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/create_pub_page.dart';
+import 'package:myapp/authentification.dart';
 
-class HelpPage extends StatelessWidget {
-  const HelpPage({Key? key}) : super(key: key);
+class ProfilPage extends StatefulWidget {
+   const ProfilPage({super.key});
 
-  void btnClick() {
-    print('Bouton cliqué');
-  }
+
+
+  @override
+  State<ProfilPage> createState() => _ProfilPageState();
+}
+
+class _ProfilPageState extends State<ProfilPage> {
+
+  final AuthentificationService _auth = AuthentificationService();
 
   @override
   Widget build(BuildContext context) {
-    return const  Center(
+    return  Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "Ici se trouveront des moyens de contacter le support",
+          const Text(
+            "the user is going to see informations about him hier",
             style: TextStyle(
-              fontSize: 38,
+              fontSize: 34,
               fontFamily: 'Poppins',
             ),
+          ),
+          ElevatedButton.icon(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.green),
+              ),
+              onPressed: () async {
+                await _auth.signOut();
+              },
+              icon: Icon(Icons.person,color: Colors.white,),
+              label: Text('logout')
           ),
         ],
       ),

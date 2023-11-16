@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/create_pub_page.dart';
+import 'package:myapp/credit_card_payment.dart';
+import 'package:myapp/paypal_payment.dart';
+
+import 'authentificate_screen.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -58,7 +61,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(post["title"],
                         style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
@@ -82,7 +85,7 @@ class HomePage extends StatelessWidget {
                                 minHeight: 20,
                                 value: currentAmount / totalAmount,
                                 backgroundColor: Colors.grey[200],
-                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue), // Couleur de la barre de progression
+                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
                               ),
                             ),
                           ),
@@ -107,7 +110,57 @@ class HomePage extends StatelessWidget {
                             style: const ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(Colors.green),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: const Text("Choose you payment method:"),
+                                    content: Row(
+                                      children: [
+                                        const SizedBox(width:20),
+                                        Container(
+                                          height: 50,
+                                          width: 50,
+                                          child: InkWell(
+                                            onTap: () {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (context) => const PaypalPayment()
+                                              );
+                                            },
+                                            child: Image.asset(
+                                              'assets/images/paypal.png',
+                                              width: 200.0,
+                                              height: 200.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 40),
+                                        Container(
+                                          height: 50,
+                                          width: 50,
+                                          child: InkWell(
+                                            onTap: () {
+                                              showDialog(
+                                                context: context,
+                                                builder:(context) => const CreditCardPayment()
+                                              );
+                                            },
+                                            child: Image.asset(
+                                              'assets/images/credit-card.png',
+                                              width: 200.0,
+                                              height: 200.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          ),
+                                      ],
+                                    )
+                                  )
+                              );
+
+                            },
                             label: const Text("Spenden",
                               style: TextStyle(
                                 fontSize: 22,
@@ -120,7 +173,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-
                   ],
                 );
               }).toList(),

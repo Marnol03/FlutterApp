@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/authentification.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 
 class ProfilPage extends StatefulWidget {
@@ -25,9 +24,9 @@ class _ProfilPageState extends State<ProfilPage> {
         child: Column(
           children: [
             const SizedBox(height: 35),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 100,
-              backgroundImage: AssetImage('assets/images/daniella.jpeg'),
+              backgroundImage: AssetImage('assets/images/profil.png'),
             ),
             const SizedBox(height: 25),
             itemProfile('Username', 'Daniella', CupertinoIcons.person),
@@ -53,7 +52,7 @@ class _ProfilPageState extends State<ProfilPage> {
                 onPressed: () async {
                   await _auth.signOut();
                 },
-                icon: Icon(Icons.person,color: Colors.white,),
+                icon: const Icon(Icons.person,color: Colors.white,),
                 label: Text('logout')
             ),
           ],

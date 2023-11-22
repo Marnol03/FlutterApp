@@ -54,16 +54,16 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
         ),
         actions:<Widget> [
           TextButton.icon(
-            icon: Icon(Icons.person,
+            icon: const Icon(Icons.person,
               color: Colors.white,
             ),
             label: Text(showSignIn ? 'Register in' : 'Sign in',
-                style: TextStyle(color: Colors.white)),
+                style: const TextStyle(color: Colors.white)),
             onPressed: () => toggleview(),
           )
         ],
       ),body: Container(
-      padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
+      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
       child: Form(
         key: _formkey,
         child: (
@@ -109,6 +109,13 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
                       dynamic result = showSignIn
                           ? await _auth.signInWithEmailAndPassword(email, password)
                           : await _auth.registerInWithEmailAndPassword(username,email, password);
+
+                      CollectionReference postRef = FirebaseFirestore.instance.collection("users");
+                      postRef.add({
+                      "email": email,
+                        "username": username,
+                        });
+
 
                       if (result == null) {
                         setState(() {

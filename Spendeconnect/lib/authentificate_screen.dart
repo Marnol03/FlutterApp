@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/constant.dart';
 import 'package:myapp/authentification.dart';
@@ -17,12 +18,14 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
   String error = '';
   bool loading = false;
 
+  final usernameController= TextEditingController();
   final emailController= TextEditingController();
   final passwordController = TextEditingController();
   bool showSignIn = true;
 
   @override
   void dispose() {
+    usernameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -32,6 +35,7 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
     setState(() {
       _formkey.currentState?.reset();
       error ='';
+      usernameController.text='';
       emailController.text='';
       passwordController.text='';
       showSignIn = !showSignIn;
@@ -65,35 +69,48 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
         child: (
             Column(
               children: [
-                TextFormField (
+                if (!showSignIn) ...[
+                  TextFormField(
+                    controller: usernameController,
+                    decoration: textInputdecoration.copyWith(hintText: "entrez votre username"),
+                    validator: (value) => value!.isEmpty ? "entrez votre username " : null,
+                  ),
+                ] else Container(), // Utilisez un Container vide dans le cas showSignIn
+                SizedBox(height: 10.0),
+                TextFormField(
                   controller: emailController,
                   decoration: textInputdecoration.copyWith(hintText: "entrez votre email"),
-                  validator: (value) => value!.isEmpty? "entrez votre email" : null,
+                  validator: (value) => value!.isEmpty ? "entrez votre email" : null,
                 ),
                 SizedBox(height: 10.0),
-                TextFormField (
+                TextFormField(
                   controller: passwordController,
                   decoration: textInputdecoration.copyWith(hintText: "entrez votre mot de passe"),
                   obscureText: true,
                   validator: (value) =>
                   value!.length < 6 ? "entrez un mot de passe valide" : null,
                 ),
-                SizedBox(height:10.0),
+                SizedBox(height: 10.0),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                  ),
                   child: Text(
                     showSignIn ? "sign In" : "Register",
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () async {
-                    if(_formkey.currentState!.validate()){
+                    if (_formkey.currentState!.validate()) {
                       setState(() => loading = true);
                       var password = passwordController.value.text;
                       var email = emailController.value.text;
+                      var username = usernameController.value.text;
 
-                      dynamic result = showSignIn ? await _auth.signInWithEmailAndPassword(email, password):
-                          await _auth.registerInWithEmailAndPassword(email, password);
+                      dynamic result = showSignIn
+                          ? await _auth.signInWithEmailAndPassword(email, password)
+                          : await _auth.registerInWithEmailAndPassword(username,email, password);
 
-                      if(result == null ){
+                      if (result == null) {
                         setState(() {
                           loading = false;
                           error = 'entrez une adresse mail valide svp';
@@ -102,13 +119,14 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
                     }
                   },
                 ),
-                SizedBox(height:10.0),
+                SizedBox(height: 10.0),
                 Text(
                   error,
-                  style: TextStyle(color: Colors.red,fontSize: 15),
+                  style: TextStyle(color: Colors.red, fontSize: 15),
                 )
               ],
             )
+
         ),
       ),
     ),

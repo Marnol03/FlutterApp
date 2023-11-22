@@ -24,7 +24,7 @@ class AuthentificationService{
     }
   }
 
-  Future registerInWithEmailAndPassword(String email,String password) async{
+  Future registerInWithEmailAndPassword(String username,String email,String password) async{
 
     try{
       UserCredential result = 

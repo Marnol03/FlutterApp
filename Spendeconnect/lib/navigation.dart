@@ -45,21 +45,25 @@ class _MyAppState extends State<MyApp> {
             Text("Publications",
                 style: TextStyle(
                   fontSize: 28,
+                  color: Colors.white,
                 )
             ),
             Text("create a new publication",
                 style: TextStyle(
                   fontSize: 28,
+                  color: Colors.white,
                 )
             ),
             Text("Favorites",
                 style: TextStyle(
                   fontSize: 28,
+                  color: Colors.white,
                 )
             ),
             Text("About me",
                 style: TextStyle(
                   fontSize: 28,
+                  color: Colors.white,
                 )
             )
           ][_CurrentIndex]

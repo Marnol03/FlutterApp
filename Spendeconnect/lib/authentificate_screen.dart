@@ -75,7 +75,7 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
                     decoration: textInputdecoration.copyWith(hintText: "entrez votre username"),
                     validator: (value) => value!.isEmpty ? "entrez votre username " : null,
                   ),
-                ] else Container(), // Utilisez un Container vide dans le cas showSignIn
+                ] else Container(),
                 SizedBox(height: 10.0),
                 TextFormField(
                   controller: emailController,

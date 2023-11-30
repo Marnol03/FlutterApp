@@ -17,6 +17,7 @@ class _CreatePubState extends State<CreatePub> {
   final titlePub = TextEditingController();
   final pubDescription = TextEditingController();
   final amountNeeded = TextEditingController();
+  final gift = 0;
 
   final controller = Get.put(ImagePickerController());
 
@@ -31,6 +32,9 @@ class _CreatePubState extends State<CreatePub> {
 
   @override
   Widget build(BuildContext context) {
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    );
     return SingleChildScrollView(
       child: Container(
         margin: const EdgeInsets.all(20),
@@ -124,10 +128,12 @@ class _CreatePubState extends State<CreatePub> {
                       final titlePubRe = titlePub.text;
                       final pudDescriptionRe = pubDescription.text;
                       final amountRe = double.parse(amountNeeded.text);
+                      final amounGiftRe = gift;
                       final imageDownloadUrl = imageUrl;
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("sending...")));
+                       ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("sending..."))
+                      );
                       FocusScope.of(context).requestFocus(FocusNode());
 
                       CollectionReference postRef = FirebaseFirestore.instance.collection("Post");
@@ -136,6 +142,7 @@ class _CreatePubState extends State<CreatePub> {
                         "text": pudDescriptionRe,
                         "amount" : amountRe,
                         "image_url": imageDownloadUrl,
+                        "gift": amounGiftRe,
 
                       });
                       setState(() {
@@ -154,3 +161,5 @@ class _CreatePubState extends State<CreatePub> {
     );
   }
 }
+
+

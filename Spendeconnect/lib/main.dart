@@ -3,9 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:myapp/user.dart';
 import 'package:myapp/splaschscreen.dart';
-import 'package:myapp/authentification.dart';
-import 'package:myapp/navigation.dart';
 
+import 'authentification.dart';
 import 'firebase_options.dart';
 
 

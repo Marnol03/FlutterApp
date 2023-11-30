@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    double currentAmount = 4000.50;
+
 
     return SingleChildScrollView(
       child: StreamBuilder(
@@ -31,21 +31,23 @@ class HomePage extends StatelessWidget {
             });
             return Column(
               children: postItems.map((post) {
+                double currentAmount =  double.parse(post["gift"].toString());
                 double totalAmount = double.parse(post["amount"].toString());
+                String postID = post.id;
                 return Column(
                   children: [
                     Container(
                       height: 50,
                       margin: const EdgeInsets.only(top: 10),
                       padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: const Row(
+                      child:  const Row(
                         children: [
                           CircleAvatar(
                             backgroundImage: AssetImage("assets/images/profil.png"),
                             backgroundColor: Colors.white,
                           ),
                           SizedBox(width: 15),
-                          Text("pseudo",
+                          Text('pseudo',
                             style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Poppins"),
                           ),
                         ],
@@ -125,7 +127,7 @@ class HomePage extends StatelessWidget {
                                             onTap: () {
                                               showDialog(
                                                   context: context,
-                                                  builder: (context) => const PaypalPayment()
+                                                  builder: (context) =>  PaypalPayment(postID: postID),
                                               );
                                             },
                                             child: Image.asset(
@@ -144,7 +146,7 @@ class HomePage extends StatelessWidget {
                                             onTap: () {
                                               showDialog(
                                                 context: context,
-                                                builder:(context) => const CreditCardPayment()
+                                                builder:(context) => CreditCardPayment(postID: postID)
                                               );
                                             },
                                             child: Image.asset(

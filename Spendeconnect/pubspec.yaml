@@ -45,6 +45,7 @@ dependencies:
   get:
   image_picker: ^1.0.4
   cloud_firestore: ^4.12.2
+  flutter_tawk: ^0.1.0
 
 dev_dependencies:
   flutter_test:

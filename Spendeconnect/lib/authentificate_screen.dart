@@ -67,17 +67,35 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
           )
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
         child: Form(
           key: _formkey,
           child: Column(
             children: [
+              // Add the welcome message here
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child:  const Text(
+                  'Welcome to SpendeConnect!',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
               if (!showSignIn) ...[
+                Image.asset(
+                  'assets/images/spendeconnect0.jpg',
+                ),
+                SizedBox(height: 30.0),
                 TextFormField(
                   controller: usernameController,
-                  decoration: textInputdecoration.copyWith(hintText: "Enter your username"),
-                  validator: (value) => value!.isEmpty ? "Enter your username" : null,
+                  decoration:
+                  textInputdecoration.copyWith(hintText: "Enter your username"),
+                  validator: (value) =>
+                  value!.isEmpty ? "Enter your username" : null,
                 ),
               ] else
                 Container(),
@@ -90,7 +108,8 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
               SizedBox(height: 10.0),
               TextFormField(
                 controller: passwordController,
-                decoration: textInputdecoration.copyWith(hintText: "Enter your password"),
+                decoration:
+                textInputdecoration.copyWith(hintText: "Enter your password"),
                 obscureText: true,
                 validator: (value) =>
                 value!.length < 6 ? "Enter a valid password" : null,
@@ -113,7 +132,8 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
 
                     dynamic result = showSignIn
                         ? await _auth.signInWithEmailAndPassword(email, password)
-                        : await _auth.registerInWithEmailAndPassword(username, email, password);
+                        : await _auth.registerInWithEmailAndPassword(
+                        username, email, password);
 
                     CollectionReference postRef =
                     FirebaseFirestore.instance.collection("users");
@@ -132,6 +152,28 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
                 },
               ),
               SizedBox(height: 10.0),
+
+              if (!showSignIn) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: const Text(
+                    'Welcome to SpendeConnect, the platform that transforms your generosity into concrete actions to save lives.\n\n'
+                        'Here, every gesture counts, every donation makes a difference. Imagine a place where solidarity comes to life, where your generosity turns into hope for those who need it most.\n\n'
+                        'At SpendeConnect, we work together to create a positive impact in the world. Log in now to discover a universe dedicated to humanity, where every click can change a destiny.\n\n'
+                        'Explore our different causes, from local initiatives to global projects. Make a donation, no matter how small, and witness the power of the united community to bring about meaningful changes.\n\n'
+                        'Join us in this adventure where compassion becomes a driving force. Log in, make donations, and together, let\'s save lives. Because at SpendeConnect, solidarity is not just a concept, it\'s a tangible reality.',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                ),
+                Image.asset(
+                  'assets/images/spendeconnect2.jpg',
+                ),
+              ],
+
               Text(
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 15),

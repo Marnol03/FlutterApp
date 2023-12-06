@@ -69,39 +69,42 @@ class _ProfilPageState extends State<ProfilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            const SizedBox(height: 35),
-            const CircleAvatar(
-              radius: 100,
-              backgroundImage: AssetImage('assets/images/profil.png'),
-            ),
-            const SizedBox(height: 25),
-            // Display user profile information
-            itemProfile('Username', username, CupertinoIcons.person),
-            const SizedBox(height: 12),
-            itemProfile('Email', email, CupertinoIcons.mail),
-            const SizedBox(height: 25),
-
-            const SizedBox(height: 25),
-            // Logout button
-            ElevatedButton.icon(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.green),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              const SizedBox(height: 35),
+              const CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/profil.png'),
               ),
-              onPressed: () async {
-                // Perform sign out action
-                await _auth.signOut();
-              },
-              icon: const Icon(Icons.person, color: Colors.white),
-              label: const Text('Logout'),
-            ),
-          ],
+              const SizedBox(height: 25),
+              // Display user profile information
+              itemProfile('Username', username, CupertinoIcons.person),
+              const SizedBox(height: 12),
+              itemProfile('Email', email, CupertinoIcons.mail),
+              const SizedBox(height: 25),
+              Image.asset(
+                'assets/images/spendeconnect1.jpg',
+              ),
+              const SizedBox(height: 25),
+              // Logout button
+              ElevatedButton.icon(
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.green),
+                ),
+                onPressed: () async {
+                  // Perform sign out action
+                  await _auth.signOut();
+                },
+                icon: const Icon(Icons.person, color: Colors.white),
+                label: const Text('Logout'),
+              ),
+            ],
+          ),
         ),
       ),
-
       // Floating action button for support
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
@@ -110,8 +113,7 @@ class _ProfilPageState extends State<ProfilPage> {
           Navigator.push(
             context,
             CupertinoPageRoute(
-              builder: (context) =>
-                  SupportPage(username: username, email: email),
+              builder: (context) => SupportPage(username: username, email: email),
             ),
           );
         },
@@ -119,6 +121,7 @@ class _ProfilPageState extends State<ProfilPage> {
         child: Icon(Icons.support_agent),
       ),
     );
+
   }
 
   // Widget to display profile information

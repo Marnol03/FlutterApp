@@ -7,7 +7,7 @@ import 'authentificate_screen.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-
+  bool isFavorited = false;
   @override
   Widget build(BuildContext context) {
 
@@ -100,8 +100,12 @@ class HomePage extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed:(){},
-                              icon: const Icon(Icons.favorite_outline)
+                              onPressed: () {
+                              },
+                              icon:  Icon(
+                                isFavorited ? Icons.favorite : Icons.favorite_outline,
+                                color: isFavorited ? Colors.red : null,
+                              )
                           ),
                           IconButton(
                               onPressed:(){},

@@ -44,144 +44,147 @@ class _AuthentificateScreenState extends State<AuthentificateScreen> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        elevation: 0.0,
-        title: Text(
-          showSignIn ? 'Sign in ' : 'Register',
-        ),
-        actions: <Widget>[
-          TextButton.icon(
-            icon: const Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            label: Text(
-              showSignIn ? 'Register in' : 'Sign in',
-              style: const TextStyle(color: Colors.white),
-            ),
-            onPressed: () => toggleview(),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 30.0),
-        child: Form(
-          key: _formkey,
-          child: Column(
-            children: [
-              // Add the welcome message here
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child:  const Text(
-                  'Welcome to SpendeConnect!',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
-                  ),
-                ),
-              ),
-              if (!showSignIn) ...[
-                Image.asset(
-                  'assets/images/spendeconnect0.jpg',
-                ),
-                SizedBox(height: 30.0),
-                TextFormField(
-                  controller: usernameController,
-                  decoration:
-                  textInputdecoration.copyWith(hintText: "Enter your username"),
-                  validator: (value) =>
-                  value!.isEmpty ? "Enter your username" : null,
-                ),
-              ] else
-                Container(),
-              SizedBox(height: 10.0),
-              TextFormField(
-                controller: emailController,
-                decoration: textInputdecoration.copyWith(hintText: "Enter your email"),
-                validator: (value) => value!.isEmpty ? "Enter your email" : null,
-              ),
-              SizedBox(height: 10.0),
-              TextFormField(
-                controller: passwordController,
-                decoration:
-                textInputdecoration.copyWith(hintText: "Enter your password"),
-                obscureText: true,
-                validator: (value) =>
-                value!.length < 6 ? "Enter a valid password" : null,
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                ),
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Colors.blueAccent,
+              elevation: 0.0,
+              title: Center(
                 child: Text(
-                  showSignIn ? "Sign In" : "Register",
-                  style: TextStyle(color: Colors.white),
+                  showSignIn ? 'Log in' : 'Sign in',
+                  style: const TextStyle(
+                      color: Colors.white, fontFamily: 'Poppins', fontSize: 30),
                 ),
-                onPressed: () async {
-                  if (_formkey.currentState!.validate()) {
-                    setState(() => loading = true);
-                    var password = passwordController.value.text;
-                    var email = emailController.value.text;
-                    var username = usernameController.value.text;
-
-                    dynamic result = showSignIn
-                        ? await _auth.signInWithEmailAndPassword(email, password)
-                        : await _auth.registerInWithEmailAndPassword(
-                        username, email, password);
-
-                    CollectionReference postRef =
-                    FirebaseFirestore.instance.collection("users");
-                    postRef.add({
-                      "email": email,
-                      "username": username,
-                    });
-
-                    if (result == null) {
-                      setState(() {
-                        loading = false;
-                        error = 'Enter a valid email address';
-                      });
-                    }
-                  }
-                },
               ),
-              SizedBox(height: 10.0),
-
-              if (!showSignIn) ...[
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: const Text(
-                    'Welcome to SpendeConnect, the platform that transforms your generosity into concrete actions to save lives.\n\n'
-                        'Here, every gesture counts, every donation makes a difference. Imagine a place where solidarity comes to life, where your generosity turns into hope for those who need it most.\n\n'
-                        'At SpendeConnect, we work together to create a positive impact in the world. Log in now to discover a universe dedicated to humanity, where every click can change a destiny.\n\n'
-                        'Explore our different causes, from local initiatives to global projects. Make a donation, no matter how small, and witness the power of the united community to bring about meaningful changes.\n\n'
-                        'Join us in this adventure where compassion becomes a driving force. Log in, make donations, and together, let\'s save lives. Because at SpendeConnect, solidarity is not just a concept, it\'s a tangible reality.',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 250,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/spendephoto1.png"),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                ),
-                Image.asset(
-                  'assets/images/spendeconnect2.jpg',
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  Text(
+                      showSignIn ? 'Welcome back,' : 'welcome to SpendeConnect',
+                      style: TextStyle(
+                          fontSize: showSignIn ? 40 : 30,
+                          fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 30.0),
+                    child: Form(
+                      key: _formkey,
+                      child: (Column(
+                        children: [
+                          if (!showSignIn) ...[
+                            TextFormField(
+                              controller: usernameController,
+                              decoration: textInputdecoration.copyWith(
+                                hintText: "username",
+                                labelText: 'Username',
+                              ),
+                              validator: (value) =>
+                                  value!.isEmpty ? "enter a username " : null,
+                            ),
+                          ] else
+                            Container(),
+                          const SizedBox(height: 10.0),
+                          TextFormField(
+                            controller: emailController,
+                            decoration: textInputdecoration.copyWith(
+                                hintText: "email", labelText: 'Email'),
+                            validator: (value) =>
+                                value!.isEmpty ? "enter a email" : null,
+                          ),
+                          const SizedBox(height: 10.0),
+                          TextFormField(
+                            controller: passwordController,
+                            decoration: textInputdecoration.copyWith(
+                                hintText: "Password"),
+                            obscureText: true,
+                            validator: (value) =>
+                                value!.length < 6 ? "invalid password" : null,
+                          ),
+                          const SizedBox(height: 10.0),
+                          TextButton.icon(
+                            icon: const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                                showSignIn
+                                    ? 'You don`t have an Account? =>Sign in'
+                                    : 'you already have an Account =>Log in',
+                                style: const TextStyle(
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.none)),
+                            onPressed: () => toggleview(),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blueAccent,
+                            ),
+                            child: Text(
+                              showSignIn ? "Log in" : "sign in",
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () async {
+                              if (_formkey.currentState!.validate()) {
+                                //setState(() => loading = true);
+                                var password = passwordController.value.text;
+                                var email = emailController.value.text;
+                                var username = usernameController.value.text;
 
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize: 15),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+                                dynamic result = showSignIn
+                                    ? await _auth.signInWithEmailAndPassword(
+                                        email, password)
+                                    : await _auth
+                                        .registerInWithEmailAndPassword(
+                                            username, email, password);
+
+                                if(!showSignIn){
+                                  CollectionReference postRef = FirebaseFirestore
+                                      .instance
+                                      .collection("users");
+                                  postRef.add({
+                                    "email": email,
+                                    "username": username,
+                                  });
+                                }
+
+                                print("le result est : $result");
+                                if (result == null) {
+                                  setState(() {
+                                    loading = false;
+                                    error =
+                                        showSignIn? 'Email or password invalid':'enter valid informations';
+                                  });
+                                }
+                              }
+                            },
+                          ),
+                          const SizedBox(height: 11.0),
+                          Text(
+                            error,
+                            style: const TextStyle(
+                                color: Colors.red, fontSize: 15),
+                          )
+                        ],
+                      )),
+                    ),
+                  ),
+                ],
+              ),
+            ));
   }
 }

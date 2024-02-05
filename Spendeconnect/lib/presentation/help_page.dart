@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:myapp/support_page.dart';
+import 'package:myapp/presentation/support_page.dart';
 
-import 'authentification.dart';
+import '../services/authentification.dart';
 
 class ProfilPage extends StatefulWidget {
   const ProfilPage({super.key});

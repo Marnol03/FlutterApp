@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/constant.dart';
-import 'package:myapp/authentification.dart';
-import 'loading.dart';
+import 'package:myapp/utils/constant.dart';
+import 'package:myapp/services/authentification.dart';
+import 'presentation/loading.dart';
 
 
 class AuthentificateScreen extends StatefulWidget {

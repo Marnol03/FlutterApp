@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/create_pub_page.dart';
+import 'package:myapp/presentation/create_pub_page.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});

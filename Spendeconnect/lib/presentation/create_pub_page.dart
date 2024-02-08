@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'image_picker_controller.dart';
+import '../image_picker_controller.dart';
 
 
 class CreatePub extends StatefulWidget {

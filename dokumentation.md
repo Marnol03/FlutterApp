@@ -22,34 +22,32 @@ Das Projekt "SpendeConnect" hat zum Ziel, eine benutzerfreundliche Plattform fü
 
 2. Architektur:
 Die Architektur unseres Projekts folgt bewährten Prinzipien für eine klare Trennung von Verantwortlichkeiten und eine effiziente Wartbarkeit. Hier sind die wichtigsten Strukturpunkte:
- -	domain/todos/:
- - todo.dart: Definiert das Datenmodell für eine Aufgabe.
- -	todo_repository.dart: Stellt die Schnittstelle für das Aufgaben-Repository bereit.
- - 	todo_use_case.dart: Implementiert die Anwendungsfälle für die Aufgabenverwaltung.
- - 	data/:
- - 	local_todo_data_source.dart: Lokale Datenquelle für Aufgaben.
- - 	firebase_todo_data_source.dart: Firebase-Datenquelle für Aufgaben.
- - 	todo_repository_impl.dart: Konkrete Implementierung des Aufgaben-Repositorys.
- - 	presentation/:
- - 	auth/: Enthält den Bildschirm für die Benutzerauthentifizierung.
- - 	home/: Enthält den Hauptbildschirm der Anwendung.
- - 	loading/: Enthält den Ladebildschirm.
- - 	splash/: Enthält den Begrüßungsbildschirm.
- - 	create_pub/: Enthält den Bildschirm zur Erstellung von Veröffentlichungen.
- - 	history/: Enthält den Bildschirm für die Historie.
- - 	profil/: Enthält den Bildschirm für das Benutzerprofil.
- - 	services/:
- - 	authentification.dart: Enthält Authentifizierungsdienste.
- - 	firebase_options.dart: Enthält Firebase-Optionen.
- - 	utils/:
- - 	constants.dart: Datei zur Definition von Konstanten.
- - 	main.dart: Der Einstiegspunkt der Anwendung.
- - 	my_app.dart: Die allgemeine Konfiguration der Anwendung.
- - 	navigator.dart: Die Datei enthält die Klasse "MyApp" und kann bei Bedarf umbenannt werden.
+•	domain/todos/:
+•	todo.dart: Definiert das Datenmodell für eine Aufgabe.
+•	todo_repository.dart: Stellt die Schnittstelle für das Aufgaben-Repository bereit.
+•	todo_use_case.dart: Implementiert die Anwendungsfälle für die Aufgabenverwaltung.
+•	data/:
+•	local_todo_data_source.dart: Lokale Datenquelle für Aufgaben.
+•	firebase_todo_data_source.dart: Firebase-Datenquelle für Aufgaben.
+•	todo_repository_impl.dart: Konkrete Implementierung des Aufgaben-Repositorys.
+•	presentation/:
+•	auth/: Enthält den Bildschirm für die Benutzerauthentifizierung.
+•	home/: Enthält den Hauptbildschirm der Anwendung.
+•	loading/: Enthält den Ladebildschirm.
+•	splash/: Enthält den Begrüßungsbildschirm.
+•	create_pub/: Enthält den Bildschirm zur Erstellung von Veröffentlichungen.
+•	history/: Enthält den Bildschirm für die Historie.
+•	profil/: Enthält den Bildschirm für das Benutzerprofil.
+•	services/:
+•	authentification.dart: Enthält Authentifizierungsdienste.
+•	firebase_options.dart: Enthält Firebase-Optionen.
+•	utils/:
+•	constants.dart: Datei zur Definition von Konstanten.
+•	main.dart: Der Einstiegspunkt der Anwendung.
+•	my_app.dart: Die allgemeine Konfiguration der Anwendung.
+•	navigator.dart: Die Datei enthält die Klasse "MyApp" und kann bei Bedarf umbenannt werden.
 Diese Struktur fördert eine klare Organisation der Anwendungskomponenten und erleichtert die Wartung und Erweiterung des Codes.
 
-### Pages
-User Projekt hat hat 5 **Seiten** siehe [hier](https://github.com/Marnol03/FlutterApp/blob/fraid/DOKUMENTATION.docx)
 ### A- AuthentificateScreen
                                                    
 

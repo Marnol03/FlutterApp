@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/create_pub_page.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -11,10 +10,10 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   final publication = [
     {
-      "title": "Cancer du foie",
+      "title": "Help Fight Liver Cancer",
       "date": "12.07.2022",
-      "text": "j´ai un cancer du foie depuis mes 3 ans",
-      "photo": "daniella",
+      "text": "I am writing to you today with a heavy heart",
+      "photo": "photo2",
     },
 
   ];
@@ -31,7 +30,7 @@ class _HistoryPageState extends State<HistoryPage> {
             final text = pub ['text'];
             return Card(
               child: ListTile(
-                leading: Image.asset("assets/images/$image.jpeg"),
+                leading: Image.asset("assets/images/$image.jpg"),
                 title:  Text('$title',
                   style: const TextStyle(
                     fontFamily: 'Poppins',
